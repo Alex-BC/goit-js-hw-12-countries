@@ -37,8 +37,13 @@ function isValidSearchQuery(evt) {
     return;
   }
 
-  const itsError = error({
-    text: "Too many matches found. Please enter a more specific query!",
-  });
-  return itsError;
+  // const itsError = error({
+  //   text: "Too many matches found. Please enter a more specific query!",
+  // });
+  if (evt.length > 10) {
+    renderCountryList(evt);
+    return error({
+      text: "Too many matches found. Please enter a more specific query!",
+    });
+  }
 }
